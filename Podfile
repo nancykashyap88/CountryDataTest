@@ -7,8 +7,8 @@ target 'TestApp' do
 
   # Pods for TestApp
 
-  pod 'Alamofire', '~> 4.2.0'
-  pod 'AlamofireImage', '~> 3.0'
+  pod 'Alamofire'
+  pod 'AlamofireImage'
 
   target 'TestAppTests' do
     inherit! :search_paths

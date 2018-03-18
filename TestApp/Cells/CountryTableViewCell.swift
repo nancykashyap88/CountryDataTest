@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import AlamofireImage
 
 class CountryTableViewCell: UITableViewCell {
@@ -15,7 +16,6 @@ class CountryTableViewCell: UITableViewCell {
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var imageViewCountry: UIImageView!
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +23,6 @@ class CountryTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -31,8 +30,11 @@ class CountryTableViewCell: UITableViewCell {
 
         labelTitle.text = title
         labelDescription.text = description
-        
-        Alamofire.request(imageUrl).responseImage { response in
+        guard
+        let url = imageUrl else {
+            return
+        }
+        Alamofire.request(url).responseImage { response in
             
             if let image = response.result.value {
                 print("image downloaded: \(image)")

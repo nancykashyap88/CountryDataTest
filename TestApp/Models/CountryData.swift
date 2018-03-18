@@ -11,9 +11,6 @@ import Foundation
 class CountryData {
     
     var title: String?
-    var description: String?
-    var imageUrl: String?
-    
     var response = Array<Any>()
 
     init() {
